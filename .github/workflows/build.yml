@@ -1,23 +1,31 @@
 name: Build FilzaSwap
-on: push: branches: [ main ] workflow_dispatch:
-jobs: build: runs-on: macos-latest
-steps:
-- name: Checkout code
-  uses: actions/checkout@v4
 
-- name: Install Theos
-  run: |
-    export THEOS=$HOME/theos
-    git clone --recursive https://github.com/theos/theos.git $THEOS
-    echo "THEOS=$THEOS" >> $GITHUB_ENV
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
-- name: Build Package
-  run: |
-    make clean
-    make package FINALPACKAGE=1
+jobs:
+  build:
+    runs-on: macos-latest
 
-- name: Upload .deb Artifact
-  uses: actions/upload-artifact@v4
-  with:
-    name: FilzaSwap-Deb
-    path: packages/*.deb
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Theos
+      run: |
+        export THEOS=$HOME/theos
+        git clone --recursive https://github.com/theos/theos.git $THEOS
+        echo "THEOS=$THEOS" >> $GITHUB_ENV
+
+    - name: Build Package
+      run: |
+        make clean
+        make package FINALPACKAGE=1
+
+    - name: Upload .deb Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: FilzaSwap-Deb
+        path: packages/*.deb
