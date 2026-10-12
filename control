@@ -1,0 +1,9 @@
+Package: com.shadow.filzaswap
+Name: FilzaSwap
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Fast file swap utility for Filza.
+Maintainer: Shadow
+Author: Shadow
+Section: Tweaks
+Depends: mobilesubstrate
