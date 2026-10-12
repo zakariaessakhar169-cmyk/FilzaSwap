@@ -11,5 +11,5 @@ FilzaSwap_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
-after-install::
- install.exec "killall -9 Filza"
+#after-install::
+# install.exec "killall -9 Filza"
